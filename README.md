@@ -6,7 +6,7 @@
   Created by SDSLabs with :heart:  
 </p>
 <p align=center>
-A command line tool to streamline your game development with Rubeus.
+A command line tool to streamline your game development process with Rubeus.
 </p>
 
 ## Contents
