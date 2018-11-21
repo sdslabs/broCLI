@@ -21,8 +21,8 @@ A command line tool to streamline your game development with Rubeus.
 
 ## <a name=setup>How do I setup broCLI?
 
-## <a name=how>How can I contribute?
-
 ## <a name=how_rubeus>How can I use broCLI with Rubeus?
+
+## <a name=how>How can I contribute?
 
 ## <a name=remarks>Remarks
