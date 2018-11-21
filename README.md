@@ -3,6 +3,9 @@
 <p/>
 
 <p align=center>
+  Created by SDSLabs with :heart:  
+</p>
+<p align=center>
 A command line tool to streamline your game development with Rubeus.
 </p>
 
