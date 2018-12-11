@@ -15,6 +15,7 @@ const (
 	Yellow = "\x1b[33m"
 	Blue   = "\x1b[34m"
 	Reset  = "\x1b[0m"
+	Bold   = "\x1b[1m"
 )
 
 // Logger type
@@ -27,7 +28,7 @@ type Logger struct {
 func NewLogger(w io.Writer) *Logger {
 	return &Logger{
 		writer: w,
-		prefix: fmt.Sprintf("%s>%s%s>%s%s>%s ", Red, Reset, Green, Reset, Blue, Reset),
+		prefix: fmt.Sprintf("%s==> ", Bold),
 	}
 }
 
@@ -55,52 +56,52 @@ func (l *Logger) Println(v ...interface{}) {
 
 // Logf logs
 func (l *Logger) Logf(format string, v ...interface{}) {
-	l.Write(l.prefix + fmt.Sprintf(format, v...) + "\n")
+	l.Write(l.prefix + fmt.Sprintf(format, v...) + Reset + "\n")
 }
 
 // Log logs
 func (l *Logger) Log(v ...interface{}) {
-	l.Write(l.prefix + fmt.Sprint(v...) + "\n")
+	l.Write(l.prefix + fmt.Sprint(v...) + Reset + "\n")
 }
 
 // Debugf logs debug info
 func (l *Logger) Debugf(format string, v ...interface{}) {
-	l.Write(l.prefix + Green + fmt.Sprintf(format, v...) + Reset + "\n")
+	l.Write(Green + l.prefix + fmt.Sprintf(format, v...) + Reset + "\n")
 }
 
 // Debug logs debug info
 func (l *Logger) Debug(v ...interface{}) {
-	l.Write(l.prefix + Green + fmt.Sprint(v...) + Reset + "\n")
+	l.Write(Green + l.prefix + fmt.Sprint(v...) + Reset + "\n")
 }
 
 // Infof logs info
 func (l *Logger) Infof(format string, v ...interface{}) {
-	l.Write(l.prefix + Blue + fmt.Sprintf(format, v...) + Reset + "\n")
+	l.Write(Blue + l.prefix + fmt.Sprintf(format, v...) + Reset + "\n")
 }
 
 // Info logs info
 func (l *Logger) Info(v ...interface{}) {
-	l.Write(l.prefix + Blue + fmt.Sprint(v...) + Reset + "\n")
+	l.Write(Blue + l.prefix + fmt.Sprint(v...) + Reset + "\n")
 }
 
 // Warnf warns
 func (l *Logger) Warnf(format string, v ...interface{}) {
-	l.Write(l.prefix + Yellow + fmt.Sprintf(format, v...) + Reset + "\n")
+	l.Write(Yellow + l.prefix + fmt.Sprintf(format, v...) + Reset + "\n")
 }
 
 // Warn warns
 func (l *Logger) Warn(v ...interface{}) {
-	l.Write(l.prefix + Yellow + fmt.Sprint(v...) + Reset + "\n")
+	l.Write(Yellow + l.prefix + fmt.Sprint(v...) + Reset + "\n")
 }
 
 // Errorf logs error
 func (l *Logger) Errorf(format string, v ...interface{}) {
-	l.Write(l.prefix + Red + fmt.Sprintf(format, v...) + Reset + "\n")
+	l.Write(Red + l.prefix + fmt.Sprintf(format, v...) + Reset + "\n")
 }
 
 // Error logs error
 func (l *Logger) Error(v ...interface{}) {
-	l.Write(l.prefix + Red + fmt.Sprint(v...) + Reset + "\n")
+	l.Write(Red + l.prefix + fmt.Sprint(v...) + Reset + "\n")
 }
 
 // Fatalf is same as Errorf followed by os.Exit(1)
