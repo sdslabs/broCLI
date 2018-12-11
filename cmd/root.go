@@ -4,10 +4,14 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/sdslabs/broCLI/logger"
+
 	"github.com/spf13/cobra"
 )
 
 var (
+	log = logger.NewLogger(os.Stdout)
+
 	config string // Flag
 
 	gamePath string
@@ -32,5 +36,5 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.Flags().StringVarP(&config, "config", "c", "", "/absolute/path/rubeus/Game")
+	rootCmd.Flags().StringVarP(&config, "config", "c", "", "set Game dir config for bro")
 }
