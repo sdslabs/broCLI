@@ -22,7 +22,7 @@ func persistentPreRun(cmd *cobra.Command, args []string) {
 		os.Exit(0)
 	}
 	// While running any other command
-	if utils.DoesExist(utils.BroConfPath) {
+	if utils.DoesExist(utils.BroConfPath) && utils.IsFile(utils.BroConfPath) {
 		file, err := ioutil.ReadFile(utils.BroConfPath)
 		if err != nil {
 			log.Fatal("Error while reading config file")
@@ -36,12 +36,12 @@ func persistentPreRun(cmd *cobra.Command, args []string) {
 
 func checkPath(config string) {
 	if !utils.IsAbsolute(config) {
-		log.Fatalf("Config path '%s' is not absolute", config)
+		log.Fatalf("Path '%s' is not absolute", config)
 	}
 	if !utils.DoesExist(config) {
-		log.Fatalf("Config path '%s' does not exist", config)
+		log.Fatalf("Path '%s' does not exist", config)
 	}
 	if !utils.IsDir(config) {
-		log.Fatalf("Config path '%s' is not a directory", config)
+		log.Fatalf("Path '%s' is not a directory", config)
 	}
 }

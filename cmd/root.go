@@ -21,7 +21,7 @@ var (
 		Long:             `BroCLI is a tool meant to make your development process easier with commands to create, build and run your project maintaining the proper architecture for Rubeus game.`,
 		PersistentPreRun: persistentPreRun,
 		Run: func(cmd *cobra.Command, args []string) {
-			log.Warn("No arguments found...")
+			log.Warn("No arguments found... Here's help:")
 			cmd.Help()
 		},
 	}
@@ -36,5 +36,10 @@ func Execute() {
 
 func init() {
 	// Flags
-	rootCmd.Flags().StringVarP(&config, "config", "c", "", "set Game dir config for bro")
+	rootCmd.Flags().StringVarP(&config, "config", "c", "", "set Game dir config")
+
+	// Commands
+	rootCmd.AddCommand(createGame)
+	rootCmd.AddCommand(createLevel)
+	rootCmd.AddCommand(createObject)
 }
