@@ -28,7 +28,7 @@ type Logger struct {
 func NewLogger(w io.Writer) *Logger {
 	return &Logger{
 		writer: w,
-		prefix: fmt.Sprintf("%s==> ", Bold),
+		prefix: "bro ▶ ",
 	}
 }
 

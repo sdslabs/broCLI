@@ -18,9 +18,10 @@ func persistentPreRun(cmd *cobra.Command, args []string) {
 		if err != nil {
 			log.Fatal("Error while writing config file")
 		}
-		log.Info("Config written successfully")
+		log.Log("Config written successfully")
 		os.Exit(0)
 	}
+	// While running any other command
 	if utils.DoesExist(utils.BroConfPath) {
 		file, err := ioutil.ReadFile(utils.BroConfPath)
 		if err != nil {
@@ -30,15 +31,7 @@ func persistentPreRun(cmd *cobra.Command, args []string) {
 		checkPath(gamePath)
 		return
 	}
-	log.Error("Config path does not exist.")
-	printConfigHelp()
-	os.Exit(1)
-}
-
-func printConfigHelp() {
-	log.Print(`Set config by running 'bro --config /absolute/pathTo/Rubeus/Game'
-See 'bro --help for more information.'
-`)
+	log.Fatalf("Game path does not exist.%sSet it using '%s --config /path/to/Game'", utils.NLn, cmd.Name())
 }
 
 func checkPath(config string) {

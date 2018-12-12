@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/sdslabs/broCLI/logger"
@@ -14,7 +13,7 @@ var (
 
 	config string // Flag
 
-	gamePath string
+	gamePath string // Set when running any command if Game path exists
 
 	rootCmd = &cobra.Command{
 		Use:              "bro",
@@ -22,6 +21,7 @@ var (
 		Long:             `BroCLI is a tool meant to make your development process easier with commands to create, build and run your project maintaining the proper architecture for Rubeus game.`,
 		PersistentPreRun: persistentPreRun,
 		Run: func(cmd *cobra.Command, args []string) {
+			log.Warn("No arguments found...")
 			cmd.Help()
 		},
 	}
@@ -30,11 +30,11 @@ var (
 // Execute commands
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
-		fmt.Println(err.Error())
-		os.Exit(1)
+		log.Fatal(err)
 	}
 }
 
 func init() {
+	// Flags
 	rootCmd.Flags().StringVarP(&config, "config", "c", "", "set Game dir config for bro")
 }

@@ -17,6 +17,7 @@ func getHomePath() string {
 
 // Constants
 var (
+	NLn         = "\n      " // New line with indentation
 	BroConfPath = filepath.Join(getHomePath(), ".brocli")
 )
 
