@@ -42,6 +42,7 @@ func create(name, game, what, wH, wCpp string) {
 	if err != nil {
 		log.Errorf("Failed to create '%s.%s.cpp'", what, name)
 	}
+	log.Logf("New %s '%s' created!", what, name)
 }
 
 var createLevel = &cobra.Command{
