@@ -31,7 +31,7 @@ func persistentPreRun(cmd *cobra.Command, args []string) {
 		checkPath(gamePath)
 		return
 	}
-	log.Fatalf("Game path does not exist.%sSet it using '%s --config /path/to/Game'", utils.NLn, cmd.Name())
+	log.Fatalf("Game path does not exist.%sSet it using 'bro --config /path/to/Game'", utils.NLn)
 }
 
 func checkPath(config string) {
