@@ -4,6 +4,7 @@ import (
 	"os"
 	"path"
 	"regexp"
+	"runtime"
 )
 
 // DoesExist checks if the given path exists
@@ -16,7 +17,20 @@ func DoesExist(pth string) bool {
 
 // IsAbsolute checks if the given path is absolute or not
 func IsAbsolute(pth string) bool {
-	return path.IsAbs(pth)
+	if path.IsAbs(pth) {
+		return true
+	}
+	if runtime.GOOS == "windows" {
+		regex1 := regexp.MustCompile(`^[A-Za-z]:\.$`)
+		if regex1.MatchString(pth) {
+			return true
+		}
+		regex2 := regexp.MustCompile(`^[A-Za-z]:/.$`)
+		if regex2.MatchString(pth) {
+			return true
+		}
+	}
+	return false
 }
 
 // IsDir checks if the path is a directory
