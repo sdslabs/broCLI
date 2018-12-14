@@ -18,7 +18,7 @@ var (
 	rootCmd = &cobra.Command{
 		Use:              "bro",
 		Short:            "A command line tool to streamline your game development process with Rubeus.",
-		Long:             `BroCLI is a tool meant to make your development process easier with commands to create, build and run your project maintaining the proper architecture for Rubeus game.`,
+		Long:             `BroCLI is a tool meant to make your development process easier with commands to create your project maintaining the proper architecture for a Rubeus game.`,
 		PersistentPreRun: persistentPreRun,
 		Run: func(cmd *cobra.Command, args []string) {
 			log.Warn("No arguments found... Here's help:")
