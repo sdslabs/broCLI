@@ -32,4 +32,12 @@ Flags:
 Use "bro [command] --help" for more information about a command.
 ```
 
+## `bro` I want to contribute
+
+1. Clone the repository and start hacking!
+
+**Note:** The vendor is committed, to add another package as dependency, `go get ...` the package in your gopath and then run the command `go mod vendor` to add the dependency in the software.
+
+_To use go-modules you must have Golang version 1.11 or later. Also remember to set the environment variable `GO111MODULE=on`. For reference see - [https://github.com/golang/go/wiki/Modules](https://github.com/golang/go/wiki/Modules)._
+
 Created and maintained by [SDSLabs](https://sdslabs.co)
