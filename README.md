@@ -5,7 +5,7 @@ BroCLI is a tool meant to make your development process easier with commands to 
 > `bro create game -ps make it awesome`
 
 1. [Get started with Rubeus](#bro-help-me-with-rubeus)
-2. [broClI help](#bro---help)
+2. [broCLI help](#bro---help)
 3. [Contributing](#bro-i-want-to-contribute)
 
 ## `bro` help me with Rubeus
