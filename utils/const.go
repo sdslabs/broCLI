@@ -1,21 +1,16 @@
 package utils
 
 import (
-	"os"
 	"path/filepath"
-	"runtime"
+
+	homedir "github.com/mitchellh/go-homedir"
 )
 
-func getHomePath() string {
-	osys := runtime.GOOS
-	if osys == "windows" {
-		return os.Getenv("HOMEPATH")
-	}
-	return os.Getenv("HOME")
-}
-
-// BroConfPath is the path of config file storing Gamepath
-var BroConfPath = filepath.Join(getHomePath(), ".brocli")
+// Path to config
+var (
+	home, _     = homedir.Dir()
+	BroConfPath = filepath.Join(home, ".brocli")
+)
 
 // Constants
 const (
