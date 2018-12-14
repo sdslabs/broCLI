@@ -2,7 +2,6 @@ package utils
 
 import (
 	"os"
-	"path"
 	"regexp"
 	"runtime"
 )
@@ -17,17 +16,16 @@ func DoesExist(pth string) bool {
 
 // IsAbsolute checks if the given path is absolute or not
 func IsAbsolute(pth string) bool {
-	if path.IsAbs(pth) {
-		return true
-	}
-	if runtime.GOOS == "windows" {
-		regex1 := regexp.MustCompile(`^[A-Za-z]:\.$`)
-		if regex1.MatchString(pth) {
+	if len(pth) > 0 {
+		if pth[0] == '/' {
 			return true
 		}
-		regex2 := regexp.MustCompile(`^[A-Za-z]:/.$`)
-		if regex2.MatchString(pth) {
-			return true
+		if runtime.GOOS == "windows" && len(pth) > 2 {
+			if pth[1] == ':' {
+				if pth[2] == '/' || pth[2] == '\\' {
+					return true
+				}
+			}
 		}
 	}
 	return false
